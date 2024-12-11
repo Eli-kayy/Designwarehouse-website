@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DesignWarehouse - Graphic Design Company</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background-color: #0e0e0e;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        nav {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            transition: background 0.3s ease;
+        }
+        nav.scrolled {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .navbar-brand {
+            color: #ffffff !important;
+            font-weight: bold;
+        }
+        .navbar-nav .nav-link {
+            color: #ffffff !important; /* White nav items */
+            transition: color 0.3s;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #ff4081 !important; /* Hover color */
+        }
+        .hero {
+            height: 100vh;
+            background: url('assets/images/set-blue-yellow-waterdrop-isolated-dark-backdrop.jpg') no-repeat center center/cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            animation: fadeIn 1s ease-in-out;
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .btn-custom {
+            background-color: #ff4081;
+            color: white;
+            border-radius: 25px;
+            padding: 10px 20px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn-custom:hover {
+            background-color: #ff1a52;
+            transform: translateY(-2px);
+        }
+        .section {
+            padding: 100px 0;
+        }
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .portfolio-item img {
+            width: 100%;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        .portfolio-hover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border-radius: 15px;
+        }
+        .portfolio-item:hover .portfolio-hover {
+            opacity: 1;
+        }
+        .portfolio-title {
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        .service-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+        }
+        .service-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .service-card h3 {
+            margin-top: 15px;
+            font-size: 1.5rem;
+        }
+        .service-card p {
+            font-size: 1rem;
+            color: #dddddd;
+        }
+        .service-card:hover {
+            box-shadow: 0 0 20px 5px rgba(0, 204, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        .whatsapp-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #25D366; /* WhatsApp color */
+            color: white;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        .whatsapp-button:hover {
+            box-shadow: 0 0 20px 5px rgba(0, 204, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        footer {
+            background-color: #111;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .social-icons a {
+            color: #ffffff;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover {
+            color: #ff4081;
+        }
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+        .map-container {
+            position: relative;
+            height: 300px;
+            margin-top: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#">DesignWarehouse</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+            <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="hero">
+    <div>
+        <h1>Welcome to DesignWarehouse</h1>
+        <p>Your vision, our creation</p>
+        <a href="#portfolio" class="btn btn-custom">View Our Work</a>
+    </div>
+</div>
+
+<div class="section" id="about">
+    <div class="container text-center">
+        <h2>About Us</h2>
+        <p>DesignWarehouse: Your Creative Partner in New Town, Accra
+
+            DesignWarehouse is a premier graphic design company based in New Town, Accra, dedicated to transforming ideas into stunning visual experiences. With a team of talented designers, we specialize in brand identity, print design, and digital solutions that elevate your brand's presence. Our commitment to creativity and innovation ensures that each project is tailored to meet our clients' unique needs. At DesignWarehouse, we believe in the power of design to engage audiences and drive success, making us the go-to partner for businesses looking to enhance their visual communication..</p>
+    </div>
+</div>
+
+<div class="section" id="portfolio">
+    <div class="container text-center">
+        <h2>Our Portfolio</h2>
+        <p>Explore our diverse range of projects that showcase our creativity and expertise.</p>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="portfolio-item">
+                    <img src="assets/images/Black Electronic Promo Instagram Post.png" alt="Project 1">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-title">Graphic Design</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="portfolio-item">
+                    <img src="assets/images/Pink Black Photocentric Neon Tech Talk Podcast Instagram Post.png" alt="Project 2">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-title">Cover Design</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="portfolio-item">
+                    <img src="assets/images/Purple And White Modern Digital Marketing Agency Facebook Post.png" alt="Project 3">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-title">Fliers</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section" id="services">
+    <div class="container text-center">
+        <h2>Our Services</h2>
+        <p>We offer a wide range of graphic design services tailored to meet your needs:</p>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="service-card">
+                    <img src="assets/images/sc1.png" alt="Brand Identity Design">
+                    <h3>Brand Identity Design</h3>
+                    <p>Create a lasting impression with a unique brand identity that resonates with your audience.</p>
+                    <a href="https://wa.me/0209927172?text=I'm%20interested%20in%20Brand%20Identity%20Design" class="whatsapp-button">Contact via WhatsApp</a>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="service-card">
+                    <img src="assets/images/printing-press-machine-mass-production-action.jpg" alt="Print Design">
+                    <h3>Print Design</h3>
+                    <p>Design stunning print materials, from brochures to business cards that capture attention and display elegance.</p>
+                    <a href="https://wa.me/0209927172?text=I'm%20interested%20in%20Print%20Design" class="whatsapp-button">Contact via WhatsApp</a>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="service-card">
+                    <img src="assets/images/sc1.png" alt="Web Design">
+                    <h3>Web Design</h3>
+                    <p>Build engaging and user-friendly websites that enhance your online presence.</p>
+                    <a href="https://wa.me/0209927172?text=I'm%20interested%20in%20Web%20Design" class="whatsapp-button">Contact via WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section" id="contact">
+    <div class="container text-center">
+        <h2>Contact Us</h2>
+        <p>If you're ready to start your project or have any questions, feel free to reach out!</p>
+        
+        <div class="contact-form">
+            <h3>Get in Touch</h3>
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-custom">Send Message</button>
+            </form>
+        </div>
+
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509596!2d144.95373531531676!3d-37.81627997975117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f0c9d1d%3A0xb8e1c8dff9f1f1f5!2sYour%20Business%20Location!5e0!3m2!1sen!2sau!4v1615507020811!5m2!1sen!2sau" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 DesignWarehouse. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 50) {
+                $('nav').addClass('scrolled');
+            } else {
+                $('nav').removeClass('scrolled');
+            }
+        });
+    });
+</script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
